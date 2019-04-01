@@ -32,7 +32,6 @@ export default class Header extends Component {
               <div className="input-group no-border">
                 <input
                   type="text"
-                  defaultValue
                   className="form-control"
                   placeholder="Search..."
                 />

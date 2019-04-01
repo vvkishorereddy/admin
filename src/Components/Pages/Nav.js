@@ -1,80 +1,48 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { HOME_ROUTE, JAVASCRIPT_ROUTE } from "../constants";
 
-export default class Nav extends Component {
+class Nav extends Component {
   render() {
+    const { pathname } = this.props.location;
     return (
       <div
         className="sidebar"
         data-color="azure"
         data-background-color="black"
-        data-image="../assets/img/sidebar-2.jpg"
+        data-image="/assets/img/sidebar-2.jpg"
       >
-        {/*
-Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-Tip 2: you can also add an image using data-image tag
-*/}
         <div className="logo">
           <a
-            href="http://www.creative-tim.com"
+            href="http://www.careersera.com"
             className="simple-text logo-normal"
           >
-            Creative Tim
+            Admin Panel
           </a>
         </div>
         <div className="sidebar-wrapper">
           <ul className="nav">
-            <li className="nav-item active  ">
-              <a className="nav-link" href="./dashboard.html">
+            <li className={`nav-item ${pathname === HOME_ROUTE && `active`}`}>
+              <Link to={HOME_ROUTE} className="nav-link">
                 <i className="material-icons">dashboard</i>
                 <p>Dashboard</p>
-              </a>
+              </Link>
             </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="./user.html">
-                <i className="material-icons">person</i>
-                <p>User Profile</p>
-              </a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="./tables.html">
+
+            <li
+              className={`nav-item ${pathname === JAVASCRIPT_ROUTE &&
+                `active`}`}
+            >
+              <Link to={JAVASCRIPT_ROUTE} className="nav-link">
                 <i className="material-icons">content_paste</i>
-                <p>Table List</p>
-              </a>
+                <p>JavaScript QA</p>
+              </Link>
             </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="./typography.html">
-                <i className="material-icons">library_books</i>
-                <p>Typography</p>
-              </a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="./icons.html">
-                <i className="material-icons">bubble_chart</i>
-                <p>Icons</p>
-              </a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="./map.html">
-                <i className="material-icons">location_ons</i>
-                <p>Maps</p>
-              </a>
-            </li>
-            <li className="nav-item ">
-              <a className="nav-link" href="./notifications.html">
-                <i className="material-icons">notifications</i>
-                <p>Notifications</p>
-              </a>
-            </li>
-            {/* <li class="nav-item active-pro ">
-      <a class="nav-link" href="./upgrade.html">
-          <i class="material-icons">unarchive</i>
-          <p>Upgrade to PRO</p>
-      </a>
-  </li> */}
           </ul>
         </div>
       </div>
     );
   }
 }
+
+export default withRouter(Nav);

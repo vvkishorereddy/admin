@@ -1,11 +1,14 @@
 import React from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import { HOME_ROUTE, JAVASCRIPT_ROUTE } from "../constants";
 import Home from "../Pages/Home";
+import Javascript from "../Pages/Javascript";
 
 export default function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path={HOME_ROUTE} exact component={Home} />
+      <Route path={JAVASCRIPT_ROUTE} exact component={Javascript} />
     </Switch>
   );
 }
