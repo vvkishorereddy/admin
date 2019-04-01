@@ -4,7 +4,7 @@ import {
   HOME_ROUTE,
   JAVASCRIPT_ROUTE,
   JAVASCRIPT_ADD_ROUTE
-} from "../constants";
+} from "../../constants";
 import Home from "../Pages/Home";
 import Javascript from "../Pages/Javascript";
 import JavascriptAdd from "../Pages/Javascript/add";

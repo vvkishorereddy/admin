@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { JAVASCRIPT_ADD_ROUTE } from "../../constants";
+import { JAVASCRIPT_ADD_ROUTE } from "../../../constants";
 
 export default class Javascript extends Component {
   render() {
@@ -18,7 +18,7 @@ export default class Javascript extends Component {
                     <div className="col-lg-2 col-md-12">
                       <Link
                         to={JAVASCRIPT_ADD_ROUTE}
-                        class="btn btn-success float-right"
+                        className="btn btn-success float-right"
                       >
                         Add
                       </Link>

@@ -4,7 +4,7 @@ import {
   HOME_ROUTE,
   JAVASCRIPT_ROUTE,
   JAVASCRIPT_ADD_ROUTE
-} from "../constants";
+} from "../../constants";
 
 class Nav extends Component {
   render() {
