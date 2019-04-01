@@ -19,9 +19,18 @@ const data = [
   }
 ];
 
-export const lisItems = () => {
-  return {
+const fetchData = async () => {
+  const response = await fetch(
+    "https://raw.githubusercontent.com/vvkishorereddy/admin/master/public/data/jqa.json"
+  );
+  return await response.json();
+};
+
+export const lisItems = () => async (dispatch, getState) => {
+  const response = await fetchData();
+
+  dispatch({
     type: JAVASCRIPT_LIST_ACTION,
-    payload: data
-  };
+    payload: response
+  });
 };
