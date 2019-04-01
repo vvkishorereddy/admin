@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Plugin from "./Plugin";
+//import Plugin from "./Plugin";
 import Nav from "./Pages/Nav";
 import Header from "./Pages/Header";
 import Footer from "./Pages/Footer";
@@ -17,7 +17,7 @@ class App extends Component {
             <Footer />
           </div>
         </div>
-        <Plugin />
+        {/*<Plugin />*/}
       </Fragment>
     );
   }

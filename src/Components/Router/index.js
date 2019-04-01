@@ -1,13 +1,18 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import {
   HOME_ROUTE,
   JAVASCRIPT_ROUTE,
   JAVASCRIPT_ADD_ROUTE
 } from "../../constants";
-import Home from "../Pages/Home";
-import Javascript from "../Pages/Javascript";
-import JavascriptAdd from "../Pages/Javascript/add";
+
+import WithSuspense from "../../HOC/withSuspense";
+
+const Home = WithSuspense(lazy(() => import("../Pages/Home")));
+const Javascript = WithSuspense(lazy(() => import("../Pages/Javascript")));
+const JavascriptAdd = WithSuspense(
+  lazy(() => import("../Pages/Javascript/add"))
+);
 
 export default function Router() {
   return (
