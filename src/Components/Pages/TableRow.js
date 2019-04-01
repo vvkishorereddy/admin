@@ -1,19 +1,16 @@
 import React from "react";
 
-export default function TableRow() {
+export default function TableRow({ row }) {
+  const { id, question, answer, status } = row;
   return (
     <tr>
-      <td style={{ width: "5%" }}>1</td>
-      <td style={{ width: "10%" }}>What is JavaScript?</td>
-      <td style={{ width: "60%" }}>
-        JavaScript is a client-side as well as server side scripting language
-        that can be inserted into HTML pages and is understood by web browsers.
-        JavaScript is also an Object based Programming language
-      </td>
+      <td style={{ width: "5%" }}>{id}</td>
+      <td style={{ width: "10%" }}>{question}</td>
+      <td style={{ width: "60%" }}>{answer}</td>
       <td style={{ width: "5%" }}>
         <div className="togglebutton">
           <label>
-            <input type="checkbox" defaultChecked disabled />
+            <input type="checkbox" defaultChecked={status} disabled />
             <span className="toggle" />
           </label>
         </div>

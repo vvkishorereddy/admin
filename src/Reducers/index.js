@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
-
-import QaReducer from "./JavascriptReducer";
+import JavascriptReducer from "./JavascriptReducer";
 
 export default combineReducers({
-  jsqa: QaReducer
+  JavascriptQuestionAnswer: JavascriptReducer
 });

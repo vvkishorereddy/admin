@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import { JAVASCRIPT_ADD_ROUTE } from "../../../constants";
 import Loader from "../../Loader";
 import TableRow from "../TableRow";
 
-export default class Javascript extends Component {
+import { lisItems } from "../../../Actions/javascriptActions";
+
+class Javascript extends Component {
+  componentDidMount() {
+    this.props.listItems();
+  }
   render() {
+    const { data } = this.props.JavascriptQuestionAnswer;
     return (
       <div className="content">
         <div className="container-fluid">
@@ -39,12 +46,15 @@ export default class Javascript extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td colSpan="5">
-                          <Loader />
-                        </td>
-                      </tr>
-                      <TableRow />
+                      {!data.length ? (
+                        <tr>
+                          <td colSpan="5">
+                            <Loader />
+                          </td>
+                        </tr>
+                      ) : (
+                        data.map(row => <TableRow key={row.id} row={row} />)
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -56,3 +66,18 @@ export default class Javascript extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    JavascriptQuestionAnswer: state.JavascriptQuestionAnswer
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  listItems: () => dispatch(lisItems())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Javascript);
