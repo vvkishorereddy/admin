@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { JAVASCRIPT_ADD_ROUTE } from "../../constants";
 
 export default class Javascript extends Component {
   render() {
@@ -9,10 +11,19 @@ export default class Javascript extends Component {
             <div className="col-lg-12 col-md-12">
               <div className="card">
                 <div className="card-header card-header-info">
-                  <h4 className="card-title">Javascript QA</h4>
-                  <p className="card-category">
-                    New employees on 15th September, 2016
-                  </p>
+                  <div className="row">
+                    <div className="col-lg-10 col-md-12">
+                      <h4 className="card-title">Javascript QA</h4>
+                    </div>
+                    <div className="col-lg-2 col-md-12">
+                      <Link
+                        to={JAVASCRIPT_ADD_ROUTE}
+                        class="btn btn-success float-right"
+                      >
+                        Add
+                      </Link>
+                    </div>
+                  </div>
                 </div>
                 <div className="card-body table-responsive">
                   <table className="table table-hover">

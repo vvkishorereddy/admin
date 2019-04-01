@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { HOME_ROUTE, JAVASCRIPT_ROUTE } from "../constants";
+import {
+  HOME_ROUTE,
+  JAVASCRIPT_ROUTE,
+  JAVASCRIPT_ADD_ROUTE
+} from "../constants";
 
 class Nav extends Component {
   render() {
@@ -30,7 +34,8 @@ class Nav extends Component {
             </li>
 
             <li
-              className={`nav-item ${pathname === JAVASCRIPT_ROUTE &&
+              className={`nav-item ${(pathname === JAVASCRIPT_ROUTE ||
+                pathname === JAVASCRIPT_ADD_ROUTE) &&
                 `active`}`}
             >
               <Link to={JAVASCRIPT_ROUTE} className="nav-link">
