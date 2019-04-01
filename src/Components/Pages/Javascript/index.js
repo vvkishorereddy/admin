@@ -46,14 +46,14 @@ class Javascript extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {!data.length ? (
+                      {data.length &&
+                        data.map(row => <TableRow key={row.id} row={row} />)}
+                      {!data.length && (
                         <tr>
                           <td colSpan="5">
                             <Loader />
                           </td>
                         </tr>
-                      ) : (
-                        data.map(row => <TableRow key={row.id} row={row} />)
                       )}
                     </tbody>
                   </table>
