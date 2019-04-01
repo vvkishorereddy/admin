@@ -18,7 +18,7 @@ export default class JavascriptAdd extends Component {
                     <div className="col-lg-2 col-md-12">
                       <Link
                         to={JAVASCRIPT_ROUTE}
-                        class="btn btn-success float-right"
+                        className="btn btn-success float-right"
                       >
                         Back
                       </Link>

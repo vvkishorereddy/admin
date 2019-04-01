@@ -5,7 +5,11 @@ import { JAVASCRIPT_ADD_ROUTE } from "../../../constants";
 import Loader from "../../Loader";
 import TableRow from "../TableRow";
 
-import { lisItems } from "../../../Actions/javascriptActions";
+import {
+  lisItems,
+  changeStatus,
+  removeItem
+} from "../../../Actions/javascriptActions";
 
 class Javascript extends Component {
   componentDidMount() {
@@ -13,6 +17,7 @@ class Javascript extends Component {
   }
   render() {
     const { data } = this.props.JavascriptQuestionAnswer;
+    const { changeStatus, removeItem } = this.props;
     return (
       <div className="content">
         <div className="container-fluid">
@@ -46,15 +51,23 @@ class Javascript extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {data.length &&
-                        data.map(row => <TableRow key={row.id} row={row} />)}
-                      {!data.length && (
+                      {data.length
+                        ? data.map(row => (
+                            <TableRow
+                              key={row.id}
+                              row={row}
+                              changeStatus={changeStatus}
+                              removeItem={removeItem}
+                            />
+                          ))
+                        : null}
+                      {!data.length ? (
                         <tr>
                           <td colSpan="5">
                             <Loader />
                           </td>
                         </tr>
-                      )}
+                      ) : null}
                     </tbody>
                   </table>
                 </div>
@@ -74,7 +87,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  listItems: () => dispatch(lisItems())
+  listItems: () => dispatch(lisItems()),
+  changeStatus: (id, fromStatus) => dispatch(changeStatus(id, fromStatus)),
+  removeItem: id => dispatch(removeItem(id))
 });
 
 export default connect(
