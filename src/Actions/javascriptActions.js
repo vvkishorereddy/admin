@@ -4,11 +4,37 @@ import {
   JAVASCRIPT_REMOVE_ACTION
 } from "../constants";
 
+import firebase from "../Firebase";
+
 const fetchData = async () => {
+  const firebaseresponse = await firebase
+    .firestore()
+    .collection("javascript")
+    .get();
+  const data = [];
+  firebaseresponse.forEach(doc => {
+    let tmp = {
+      ...doc.data(),
+      id: doc.id
+    };
+    data.push(tmp);
+  });
+  return data;
+
   const response = await fetch(
     "https://raw.githubusercontent.com/vvkishorereddy/admin/master/public/data/javascript.json"
   );
   return await response.json();
+};
+
+const updateStatus = async (id, fromStatus) => {
+  const firebaseresponse = await firebase
+    .firestore()
+    .collection("javascript")
+    .doc(id)
+    .update({ status: !fromStatus });
+  console.log(firebaseresponse, 8541);
+  return firebaseresponse;
 };
 
 export const lisItems = () => async (dispatch, getState) => {
